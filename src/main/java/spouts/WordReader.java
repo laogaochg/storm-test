@@ -12,18 +12,35 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Map;
 
-import backtype.storm.spout.SpoutOutputCollector;
-import backtype.storm.task.TopologyContext;
-import backtype.storm.topology.IRichSpout;
-import backtype.storm.topology.OutputFieldsDeclarer;
-import backtype.storm.tuple.Fields;
-import backtype.storm.tuple.Values;
+import org.apache.storm.spout.SpoutOutputCollector;
+import org.apache.storm.task.TopologyContext;
+import org.apache.storm.topology.IRichSpout;
+import org.apache.storm.topology.OutputFieldsDeclarer;
+import org.apache.storm.tuple.Fields;
+import org.apache.storm.tuple.Values;
+
 
 public class WordReader implements IRichSpout {
     private SpoutOutputCollector collector;
     private FileReader fileReader;
     private boolean completed = false;
     private TopologyContext context;
+
+
+    @Override
+    public void activate() {
+
+    }
+
+    @Override
+    public void deactivate() {
+
+    }
+
+    @Override
+    public Map<String, Object> getComponentConfiguration() {
+        return null;
+    }
 
     public boolean isDistributed() {
         return false;
@@ -56,6 +73,7 @@ public class WordReader implements IRichSpout {
             return;
         }
         String str;
+        System.out.println("创建reader---------");
         //创建reader
         BufferedReader reader = new BufferedReader(fileReader);
         try {
@@ -72,6 +90,7 @@ public class WordReader implements IRichSpout {
             completed = true;
         }
     }
+
 
     /**
      * 我们将创建一个文件并维持一个collector对象

@@ -6,17 +6,24 @@ package bolts;
  */
 import java.util.HashMap;
 import java.util.Map;
-import backtype.storm.task.OutputCollector;
-import backtype.storm.task.TopologyContext;
-import backtype.storm.topology.IRichBolt;
-import backtype.storm.topology.OutputFieldsDeclarer;
-import backtype.storm.tuple.Tuple;
 
-public class WordCounter implements IRichBolt{
+import org.apache.storm.task.OutputCollector;
+import org.apache.storm.task.TopologyContext;
+import org.apache.storm.topology.IRichBolt;
+import org.apache.storm.topology.OutputFieldsDeclarer;
+import org.apache.storm.tuple.Tuple;
+
+public class WordCounter implements IRichBolt {
     Integer id;
     String name;
     Map<String,Integer> counters;
     private OutputCollector collector;
+
+
+    @Override
+    public Map<String, Object> getComponentConfiguration() {
+        return null;
+    }
 
     /**
      * 这个spout结束时（集群关闭的时候），我们会显示单词数量

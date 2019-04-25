@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="OFF">
+    <Appenders>
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %p %c:%L %m%n" />
+        </Console>
+       <!-- <RollingFile name="ROLLING" fileName="/logs/xyf-admin/log.log"
+                     filePattern="/logs/log_%d{yyyy-MM-dd}_%i.log">
+            <PatternLayout pattern="%d %p %c{1.} [%t] %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <SizeBasedTriggeringPolicy size="1024 KB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="100"/>
+        </RollingFile>-->
+    </Appenders>
+
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="CONSOLE" />
+        </Root>
+
+        <!-- 控制某些包下的类的日志级别 -->
+        <Logger name="org.apache" level="ERROR">
+            <AppenderRef ref="CONSOLE"/>
+        </Logger>
+    </Loggers>
+</Configuration>
