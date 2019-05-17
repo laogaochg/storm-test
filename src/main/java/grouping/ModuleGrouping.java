@@ -11,6 +11,7 @@ import org.apache.storm.task.WorkerTopologyContext;
 /**
  * @Author: LaoGaoChuang
  * @Date : 2019/4/25 17:47
+ * 指派流发送到下一个节点的方式
  */
 public class ModuleGrouping implements CustomStreamGrouping, Serializable {
     private List<Integer> targetTasks;

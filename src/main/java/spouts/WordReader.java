@@ -79,9 +79,7 @@ public class WordReader implements IRichSpout {
         try {
             //读所有文本行
             while ((str = reader.readLine()) != null) {
-                /**
-                 * 按行发布一个新值
-                 */
+                // todo 在没有emit的情况下nextTuple理论上最大的调用频率就是1000/s
                 this.collector.emit(new Values(str), str);
             }
         } catch (Exception e) {
